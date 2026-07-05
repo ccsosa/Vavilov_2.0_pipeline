@@ -1,5 +1,5 @@
-### this script can be used to put the AUC values and thresholds of the
-# calibrated models in a single table
+### this script can be used to get summary richness maps using potential niche tif files in several categories for future projections
+
 
 # author: Chrystian Sosa
 

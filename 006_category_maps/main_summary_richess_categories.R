@@ -1,4 +1,4 @@
-## master script for soil outliers
+## master script for summary map files
 
 # set user of the script
 #user <- "Tobias"

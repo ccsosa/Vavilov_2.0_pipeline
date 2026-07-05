@@ -1,4 +1,4 @@
-
+### this script can be used to get summary richness maps using potential niche tif files for categories for current
 # author: Chrystian Sosa
 
 library(terra)
