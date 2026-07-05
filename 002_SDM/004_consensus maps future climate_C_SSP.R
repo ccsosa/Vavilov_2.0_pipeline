@@ -139,6 +139,49 @@
 #' }
 #'
 #' @export
+
+
+# load packages
+library(terra)
+library(parallel)
+library(pbapply)
+
+# set user of the script
+user <- 'Chrystian'
+
+if (user == "Chrystian") {
+  basedir <- "//catalogue/MultifLandscapesA1706/1.Data/Results"
+}
+
+setwd(dir = paste0(basedir, "/SDM results"))
+species_set <- read.csv("species_set_SDM_all.csv")
+species_set <- species_set[, 1]
+
+GCMs <- c("ACCESS-CM2", "GISS-E2-1-G", "INM-CM5-0", "MIROC6", "MPI-ESM1-2-HR")
+SSPs <- c("ssp245", "ssp370")
+year <- "2050"
+
+output_dir             <- paste0(basedir, "/SDM results/", "Distribution maps/Future/", year)
+output_dir             <- paste0(output_dir, "/", "Consensus_maps_folder2")
+output_dir_fut         <- paste0(output_dir, "/", "Fut_consensus")
+output_dir_fut_NOHULL  <- paste0(output_dir_fut, "/", "NO_HULL")
+output_dir_fut_HULL    <- paste0(output_dir_fut, "/", "CONCAVE_HULL")
+output_changes_dir     <- paste0(output_dir, "/", "changes_FC")
+output_changes_csv_dir <- paste0(output_dir, "/", "changes_CSV")
+output_SUM_dir         <- paste0(output_dir, "/", "sums")
+
+if (!dir.exists(output_dir))             dir.create(output_dir)
+if (!dir.exists(output_changes_dir))     dir.create(output_changes_dir)
+if (!dir.exists(output_SUM_dir))         dir.create(output_SUM_dir)
+if (!dir.exists(output_dir_fut))         dir.create(output_dir_fut)
+if (!dir.exists(output_changes_csv_dir)) dir.create(output_changes_csv_dir)
+if (!dir.exists(output_dir_fut_NOHULL))  dir.create(output_dir_fut_NOHULL)
+if (!dir.exists(output_dir_fut_HULL))    dir.create(output_dir_fut_HULL)
+
+current_dir <- paste0(basedir, "/SDM results/", "Distribution maps", "/", "Presence-absence")
+chull_dir   <- "//catalogue/MultifLandscapesA1706/1.Data/Results/concave_hull_rasters_ADM0_2_5m"
+
+
 process_species <- function(i) {
   library(terra)
   
