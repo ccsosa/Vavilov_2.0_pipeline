@@ -26,9 +26,11 @@ For more details, see the Excel file `VAVILOV2_PIPELINE_DESCRIPTION.xlsx` includ
 - **001_observed_richness_buffer**: Performs a 10 km buffer analysis around occurrences
 - **002_SDM**: Performs species distribution modelling
 - **003_CONCAVE_HULL**: Computes concave hulls used to constrain each species' native range and derive its realized niche
-- **004_realized_niche**: Crops SDM outputs to the concave hulls and produces summary richness maps
+- **004_potential_realized_niche**: Crops SDM outputs to the concave hulls and produces summary richness maps
 - **005_soil_outliers**: Performs quantile analyses to identify candidate species for Vision for Adapted Crops and Soils (VACS)
-- **006_STATS**: Generates barplots summarizing species counts by plant part and food group
+- ***006_category_maps***: This performs summary maps considering column categories
+- **007_STATS**: Generates barplots summarizing species counts by plant part and food group
+- ***008_Extra_Steps***: Copy final outpus to the website
 
 ## Pipeline scheme
 
